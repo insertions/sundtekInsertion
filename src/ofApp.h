@@ -2,6 +2,8 @@
 
 #include "ofMain.h"
 #include "ofxVLCVideoPlayer.h"
+#include "ofxSyphon.h"
+#include "ofxGui.h"
 
 class ofApp : public ofBaseApp{
     
@@ -21,7 +23,17 @@ public:
     void dragEvent(ofDragInfo dragInfo);
     void gotMessage(ofMessage msg);
     
+    //void setupGui();
+    //void drawDebug();
+    
     ofxVLCVideoPlayer player;
+    ofxSyphonServer mainOutputSyphonServer;
+    
+    //ofxPanel gui;
+    //ofxToggle show_debug_tgl;
+    //ofxButton load_video_btn;
+    
+    bool hide_video;
     
 };
 
