@@ -24,7 +24,7 @@ public:
     void gotMessage(ofMessage msg);
     
     //void setupGui();
-    //void drawDebug();
+    void drawSubImage();
     
     ofxVLCVideoPlayer player;
     ofxSyphonServer mainOutputSyphonServer;
@@ -32,6 +32,7 @@ public:
     //ofxPanel gui;
     //ofxToggle show_debug_tgl;
     //ofxButton load_video_btn;
+    int video_source;
     
     bool hide_video;
     

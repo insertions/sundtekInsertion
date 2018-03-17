@@ -14,13 +14,21 @@ void ofApp::setup(){
     //player.loadMovie("https://www.hdpvrcapture.com/hdpvrcapturev3/samples/20131211_103918-1280x720p60.ts");
     
     
+    //before executing this, you need to make sure the media server is working fine
+    //root@Macintosh-291:/opt/bin$ ./rtspd
+    
     mainOutputSyphonServer.setName("Insertion Output");
-    player.loadMovie("http://localhost:22000/stream/CBFT%2DDT%09");
+    
+    player.loadMovie("http://localhost:22000/stream/CBMT-DT");
+    //player.loadMovie("http://localhost:22000/stream/CJNT");
+    //player.loadMovie("http://localhost:22000/stream/CIVM-HD");
+    
     player.play();
     
     //setupGui();
     
     //ofSetFrameRate(60);
+    ofSetFrameRate(30);
 }
 
 
@@ -50,23 +58,57 @@ void ofApp::update(){
 
 //--------------------------------------------------------------
 void ofApp::draw(){
-    //player.draw(0,0, ofGetWidth(), ofGetHeight());
-    player.draw(0,0);
+    player.draw(0,0, ofGetWidth(), ofGetHeight());
+    //player.draw(0,0);
     
-    mainOutputSyphonServer.publishScreen();
+    
     //gui.draw();
     //drawDebug();
+    //drawSubImage();
+    
+    mainOutputSyphonServer.publishScreen();
+    
+    int xpos = (int) (ofGetWidth()/2)-175;
+    int ypos = (int) (ofGetHeight()/2)-25;
+    ofDrawBitmapStringHighlight("Insertions - Testing Sundtek streams", xpos, ypos, ofColor(ofColor::black, 90),ofColor::yellow);
+    
 }
 
-/*
+
 //--------------------------------------------------------------
-void ofApp::drawDebug() {
+void ofApp::drawSubImage() {
+    ofTexture test = player.getTextureReference();
+    
+    test.drawSubsection(0, 0, 200, 200, mouseX, mouseY);
+    
+    //int xpos = (int) (ofGetWidth()/2)-175;
+    //int ypos = (int) (ofGetHeight()/2)-25;
+    //ofDrawBitmapStringHighlight("test", xpos, ypos, ofColor(ofColor::black, 90),ofColor::yellow);
+    
 }
- */
+ 
 
 
 //--------------------------------------------------------------
 void ofApp::keyPressed  (int key){
+    player.stop();
+
+    switch(key) {
+    case '1':
+        player.loadMovie("http://localhost:22000/stream/CBMT-DT");
+        cout << "changing channel to 1" << endl;
+        break;
+    case '2':
+        player.loadMovie("http://localhost:22000/stream/CJNT");
+        cout << "changing channel to 2" << endl;
+        break;
+    case '3':
+        player.loadMovie("http://localhost:22000/stream/CIVM-HD");
+        cout << "changing channel to 3" << endl;
+        break;
+    }
+    
+    player.play();
 }
 
 //--------------------------------------------------------------
