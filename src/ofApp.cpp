@@ -19,7 +19,7 @@ void ofApp::setup(){
     
     mainOutputSyphonServer.setName("Insertion Output");
     
-    player.loadMovie("http://localhost:22000/stream/CBMT-DT");
+    //player.loadMovie("http://localhost:22000/stream/CBMT-DT");
     //player.loadMovie("http://localhost:22000/stream/CJNT");
     //player.loadMovie("http://localhost:22000/stream/CIVM-HD");
     
